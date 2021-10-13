@@ -18,8 +18,9 @@
 
 \RequirePackage{titlesec}
 \newcommand{\Attention}{\begingroup\titleformat{\subsection}{\bf}{}{0pt}{\hspace{0.5em}}\subsection[注意事项（请仔细阅读）]{【注意事项（请仔细阅读）】}\endgroup}
-\titleformat{\section}{\Large\sf}{}{0pt}{\centering}
+\titleformat{\section}{\Large\sf}{}{0pt}{\centering\label{sec:\thesection}}
 \titleformat{\subsection}{\bf}{}{0.5em}{}
+\titleformat{\subsubsection}{\bf}{}{0.5em}{}
 
 \RequirePackage{enumitem}
 \setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
@@ -36,11 +37,12 @@
 
 
 \RequirePackage{lineno}
-\RequirePackage[most]{tcolorbox}
+\RequirePackage{tikz}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{most}
 
 \newenvironment{example}
 {
-    
     \ttfamily
     \begin{tcolorbox}[
         colframe=blue,
@@ -48,14 +50,15 @@
         left=0.3125in,
         colback = white,
         boxrule = 0.5pt,
-        left=5mm
-        ]
-}
+        left=5mm,
+        ]}
 {
     \end{tcolorbox}
 }
 
 \RequirePackage{xeCJKfntef}
+\RequirePackage{hyperref}
 \newcommand\stress[1]{\textbf{\CJKunderdot{#1}}}
 \newcommand\filename[1]{\textbf{\textit{#1}}}
-\newcommand\string[1]{\underline{\texttt{#1}}}
+\newcommand\ttstring[1]{\texttt{\uline{#1}}}
+\newcommand\englishname[1]{\texorpdfstring{\textrm{\MakeLowercase{#1}}}{#1}}
